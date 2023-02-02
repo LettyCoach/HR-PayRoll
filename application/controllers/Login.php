@@ -52,6 +52,7 @@ class Login extends CI_Controller {
 		redirect(base_url() . 'login', 'refresh');		
 	}
 	else{
+
         //Validating login
         $login_status = $this->validate_login($email, $password);
         $response['login_status'] = $login_status;
@@ -83,7 +84,6 @@ class Login extends CI_Controller {
     //Validating login from request
     function validate_login($email = '', $password = '') {
         $credential = array('em_email' => $email, 'em_password' => $password,'status' => 'ACTIVE');
-
 
         $query = $this->login_model->getUserForLogin($credential);
         if ($query->num_rows() > 0) {
